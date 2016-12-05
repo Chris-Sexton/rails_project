@@ -1,3 +1,4 @@
+config.omniauth :github, 'dc2fd8c8931cb581efa2', '7b151b6edfcdc48d574ba1ba9dbb3d9c6a2f7c3e', :scope => 'user:email'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
