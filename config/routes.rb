@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'static/index'
+  get '/about' => 'static#about'
 
   resources :comments
   resources :ratings

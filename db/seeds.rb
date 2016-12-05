@@ -14,7 +14,7 @@
       )
 
     Recipe.create(
-      name: Faker::Name.first_name + "'s" + Faker::Lorem.word,
+      name: Faker::Name.first_name + "'s " + Faker::Lorem.word,
       description: Faker::Lorem.sentence
       )
 
