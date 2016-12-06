@@ -7,11 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first
 #   
 
+  User.create(
+      email: "chris@example.me",
+      password: "123456"
+      )
+
   10.times do 
 
     User.create(
       email: Faker::Internet.email,
-      password: "testtest"
+      password: "123456"
       )
 
     Recipe.create(
