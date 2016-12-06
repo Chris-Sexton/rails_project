@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   get 'static/index'
   get '/about' => 'static#about'
 
-  resources :comments
-  resources :ratings
   resources :ingredients
-  resources :recipes
+  resources :recipes do
+    resources :comments, only: [:new, :create, :show]
+    resources :ratings, only: [:new, :create, :show]
+  end
   
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
