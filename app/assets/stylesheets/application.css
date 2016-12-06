@@ -12,5 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap_and_overrides
  */
+
+@import "bootstrap";
+@import "bootstrap-sprockets";
