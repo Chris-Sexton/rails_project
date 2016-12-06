@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :ingredients
   resources :recipes do
-    resources :comments
+    resources :comments, only: [:new, :create, :index, :destroy]
     resources :ratings, only: [:new, :create, :show]
   end
   
