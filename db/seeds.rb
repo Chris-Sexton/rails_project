@@ -4,9 +4,10 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   Mayor.create(name: 'Emanuel', city: cities.first
+#   
 
- 10.times do
+  10.times do
 
     User.create(
       email: Faker::Internet.email,
@@ -15,7 +16,8 @@
 
     Recipe.create(
       name: Faker::Name.first_name + "'s " + Faker::Lorem.word,
-      description: Faker::Lorem.sentence
+      description: Faker::Lorem.sentence,
+      user_id: Faker::Number.between(1, 10)
       )
 
     Ingredient.create(
