@@ -1,4 +1,4 @@
-<%= form_for @recipe do |f| %>
+<%= form_for(@recipe) do |f| %>
   
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
@@ -6,14 +6,17 @@
   <%= f.label :description %><br>
   <%= f.text_area :description %><br>
 
+  <%= f.label "Rating out of 5" %><br>
+  <%= f.number_field :rating, min: 1, max: 5 %><br><br>
+
   <%= f.label "Select Existing Ingredients" %>
   <%= f.collection_check_boxes :ingredients, Ingredient.all, :id, :name %><br>
 
   <%= f.label "Or add a new ingredient" %><br>
   <%= f.fields_for(:ingredients, Ingredient.new) do |ing_form| %>
 
-  <%= ing_form.label :name %>
-  <%= ing_form.text_field :name %>
+    <%= ing_form.label :name %>
+    <%= ing_form.text_field :name %>
   <% end %> 
 
    <%= f.hidden_field :user_id, :value => current_user.id %>
