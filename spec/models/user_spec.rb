@@ -12,7 +12,8 @@ RSpec.describe User, type: :model do
     @recipe = Recipe.create(
       name: Faker::Name.first_name + "'s" + Faker::Lorem.word,
       description: Faker::Lorem.sentence,
-      user_id: @user.id
+      user_id: @user.id,
+      rating: Faker::Number.between(1, 5)
       )
 
     @comment = Comment.create(
@@ -21,24 +22,16 @@ RSpec.describe User, type: :model do
       content: Faker::Lorem.sentence
       )
 
-    @rating = Rating.create(
-      user_id: @user.id, 
-      recipe_id: 1,
-      rating: Faker::Number.between(1, 5)
-      )
   end
   end
   
   it "a user has many recipes" do
     expect(@user.recipes.count).to eq(3)
   end
+  #this is why testing rocks. I found that recipes didn't belong to a user!
 
   it "a user has many comments" do
     expect(@user.comments.count).to eq(3)
-  end
-
-  it "a user has many ratings" do
-    expect(@user.ratings.count).to eq(3)
   end
 
 end
