@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :recipes
-  has_many :ratings       
+  has_many :ratings
+
+  enum role: [:user, :moderator, :admin]       
 
   def self.from_omniauth(auth)  
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
