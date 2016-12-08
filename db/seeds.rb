@@ -8,21 +8,24 @@
 #   
 
   User.create(
-      email: "chris@example.me",
-      password: "123456"
+      name: Faker::Name.name,
+      email: "lucas@email.net",
+      password: "testtest"
       )
 
   10.times do 
 
     User.create(
+      name: Faker::Name.name,
       email: Faker::Internet.email,
-      password: "123456"
+      password: "testtest"
       )
 
     Recipe.create(
       name: Faker::Name.first_name + "'s " + Faker::Lorem.word,
       description: "Recipe Description",
-      user_id: Faker::Number.between(1, 10)
+      user_id: Faker::Number.between(1, 10),
+      rating: Faker::Number.between(1, 5)
       )
 
     Ingredient.create(
@@ -33,12 +36,6 @@
       user_id: Faker::Number.between(1, 5),
       recipe_id: Faker::Number.between(1, 5), 
       content: Faker::Lorem.sentence
-      )
-
-    Rating.create(
-     user_id: Faker::Number.between(1, 10),
-     recipe_id: Faker::Number.between(1, 10), 
-     rating: Faker::Number.between(1, 5)
       )
 
     RecipeIngredient.create(
