@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
 gem 'omniauth-github'
+gem 'sprockets', '3.6.3'
 
 gem 'less-rails', '~> 2.8'
 gem 'therubyracer', '~> 0.12.2'
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'byebug'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do

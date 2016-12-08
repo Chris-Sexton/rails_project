@@ -27,14 +27,19 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    authorize @recipe
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
+    authorize @recipe
+    raise recipe_params.inspect
+    @recipe.update(recipe_params)
+
+    if @recipe.save
       redirect_to recipe_path(@recipe)
     else
-      flash[:alert] = @recipe.errors.message
+      raise "Try again!"
       render 'edit'
     end
   end
@@ -49,6 +54,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :name, :rating, :description, :ingredients, :ingredients_attributes => [:name])
+    params.require(:recipe).permit(:user_id, :name, :rating, :description, :ingredient_ids => [], :ingredients_attributes => [:name])
   end
 end

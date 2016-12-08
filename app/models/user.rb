@@ -6,9 +6,15 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :recipes
-  has_many :ratings
 
-  enum role: [:user, :moderator, :admin]       
+  enum role: [:user, :moderator, :admin]
+  
+  after_initialize :set_default_user_role
+
+  def set_default_user_role
+    self.role = :user unless self.role
+  end
+
 
   def self.from_omniauth(auth)  
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

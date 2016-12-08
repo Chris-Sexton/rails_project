@@ -9,8 +9,9 @@
 
   User.create(
       name: Faker::Name.name,
-      email: "lucas@email.net",
-      password: "testtest"
+      email: "chris@example.me",
+      password: "123456"
+      role: 2
       )
 
   10.times do 
@@ -18,7 +19,7 @@
     User.create(
       name: Faker::Name.name,
       email: Faker::Internet.email,
-      password: "testtest"
+      password: "123456"
       )
 
     Recipe.create(
