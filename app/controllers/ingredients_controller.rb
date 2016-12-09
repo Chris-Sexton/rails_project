@@ -27,7 +27,8 @@ class IngredientsController < ApplicationController
     @ingredient.update(ingredient_params)
     if @ingredient.save
       redirect_to ingredients_path
-    else 
+    else
+      flash[:alert] = @ingredient.errors.full_messages
       render 'edit'
     end
   end
