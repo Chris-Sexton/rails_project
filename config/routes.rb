@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'static/index'
   get '/about' => 'static#about'
 
+  resources :recipe_ingredients
+
   resources :ingredients
   resources :recipes do
     resources :comments
