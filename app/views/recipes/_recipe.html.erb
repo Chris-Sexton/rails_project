@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h4>by <%= @recipe.user.name %></h4>
+<h4>by <%= @recipe.name %></h4>
 <h5>Rated as <%= @recipe.rating %>/5 </h5>
 
 <p><%= @recipe.description %></p>
@@ -15,7 +15,7 @@
     <thead>
       <tr>
         <th>Ingredient</th>
-        <th>Amount</th>
+        <th>Amount <%= link_to "Edit", recipe_recipe_ingredients_path(@recipe) %></th>
       </tr>
     </thead>
     <tbody>

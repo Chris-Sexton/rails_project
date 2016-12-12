@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   get 'static/index'
   get '/about' => 'static#about'
 
+  post '/recipe_ingredients' => 'recipeingredients#amount'
+
   resources :ingredients
   resources :recipes do
     resources :comments
+    resources :recipe_ingredients
   end
   
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
