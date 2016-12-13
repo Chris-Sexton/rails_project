@@ -4,27 +4,27 @@
 
 <ul class="list-group">
   <% @recipes.each do |recipe| %>
-  <% if recipe.user_id == current_user.id %>
-  <li class="list-group-item">
-    <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
-    <h4>by <%= recipe.user.name %></h4>
-    <h4><%= comment_count(recipe) %></h4>
+    <% if recipe.user_id == current_user.id %>
+      <li class="list-group-item">
+        <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+        <h4>by <%= recipe.user.name %></h4>
+        <h4><%= comment_count(recipe) %></h4>
+      </li>
     <% end %>
   <% end %>
-  </li>
-  </ul>
+</ul>
 
 <h1>All Recipes</h1>
 
 <ul class="list-group">
   <% @recipes.each do |recipe| %>
-  <li class="list-group-item">
-    <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
-    <h4>by <%= recipe.name %></h4>
-    <h4><%= comment_count(recipe) %>
-    <% if current_user.admin? %>
-      <%= link_to "Delete", recipe_path(recipe), method: :delete %>
-    <% end %>
-  </li>
-<% end %>
+    <li class="list-group-item">
+      <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+      <h4>by <%= recipe.user.name %></h4>
+      <h4><%= comment_count(recipe) %>
+      <% if current_user.admin? %>
+        <%= link_to "Delete", recipe_path(recipe), method: :delete %>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
