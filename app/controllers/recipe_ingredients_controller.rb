@@ -8,26 +8,25 @@ class RecipeIngredientsController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_ingredients = @recipe.recipe_ingredients
-    @amount = params["/recipe_ingredients"][0].to_i
-    @ingredient_id = params.keys[2].to_i
 
-    RecipeIngredient.set_amount(@recipe.id, @ingredient_id, @amount)
+    # @amount = params["/recipe_ingredients"].values[0].to_i
+    @ingredient_id = params["ingredient_id"]
+    @quantity = params["/recipe_ingredients"].values[0].to_i
+
+    setter = RecipeIngredient.set_amount(@recipe.id, @ingredient_id, @quantity)
     redirect_to recipe_path(@recipe)
   end
 
-  def update
-    raise params.inspect
-    redirect_to recipe_path(@recipe)
-  end
+  # def update
+  #   @recipe = Recipe.find(params[:recipe_id])
+  #   @recipe_ingredients = @recipe.recipe_ingredients
 
-  def amount
-    raise params.inspect
-  end
+  #   @amount = params["/recipe_ingredients"].values[0].to_i
+  #   @ingredient_id = params['ingredient_id'].to_i
 
-  private
+  #   setter = RecipeIngredient.set_amount(@recipe.id, @ingredient_id, @amount)
 
-  def ri_params
-    params.permit()
-  end
+  #   redirect_to recipe_path(@recipe)
+  # end
 
 end
