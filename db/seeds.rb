@@ -10,8 +10,8 @@
   User.create(
       name: Faker::Name.name,
       email: "chris@example.me",
-      password: "123456"
-      role: 2
+      password: "123456",
+      role: 2,
       )
 
   10.times do 
@@ -37,12 +37,6 @@
       user_id: Faker::Number.between(1, 5),
       recipe_id: Faker::Number.between(1, 5), 
       content: Faker::Lorem.sentence
-      )
-
-    RecipeIngredient.create(
-      recipe_id: Faker::Number.between(1, 5),
-      ingredient_id: Faker::Number.between(1, 5),
-      quantity: Faker::Number.between(1, 5)
       )
 
   end
