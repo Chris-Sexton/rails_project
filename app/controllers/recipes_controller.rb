@@ -7,10 +7,6 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render json:@recipe}
-    end
   end
 
   def new
@@ -56,6 +52,15 @@ class RecipesController < ApplicationController
     authorize @recipe
     @recipe.destroy
     redirect_to recipes_path
+  end
+
+  def search
+  end
+
+  def results
+    term = params["search"]
+    recipe = Recipe.find_recipe(term)
+    redirect_to recipe_path(recipe)
   end
 
   private
