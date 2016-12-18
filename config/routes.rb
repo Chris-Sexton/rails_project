@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :recipes do
     resources :comments
-    resources :recipe_ingredients
+    resources :recipe_ingredients, only: [:index, :create, :update]
   end
   
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }

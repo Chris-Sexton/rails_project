@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h4>by <%= @recipe.name %></h4>
+<h4>by <%= @recipe.user.name %></h4>
 <h5>Rated as <%= @recipe.rating %>/5 </h5>
 
 <p><%= @recipe.description %></p>
@@ -15,15 +15,18 @@
     <thead>
       <tr>
         <th>Ingredient</th>
-        <th>Amount <%= link_to "Edit", recipe_recipe_ingredients_path(@recipe) %></th>
+        <th>Amount <%= link_to "Edit", recipe_recipe_ingredients_path(@recipe), :id => :edit_amount %></th>
       </tr>
     </thead>
     <tbody>
-      <% @recipe.ingredients.each do |ingredient| %>
-      <tr>
-        <td><%= link_to ingredient.name, ingredient_path(ingredient) %></td>
-        <td><%= ingredient.recipe_amount(@recipe) %></td>
-      </tr>
+      <% @recipe.ingredients.each do |ingredient|%>
+        <tr>
+          <td><%= link_to ingredient.name, ingredient_path(ingredient) %></td>
+          <td id="ingredient_amount"><%= ingredient.recipe_amount(@recipe) %></td>
+          <td class="ingredient_form" id="<%= ingredient.id%>">
+          <%= form_tag(ingredient_path(ingredient)) %><%= number_field_tag :quantity, ingredient.recipe_amount(@recipe) %><%= submit_tag "Edit", id: :submit %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
