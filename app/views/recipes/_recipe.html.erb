@@ -22,7 +22,7 @@
       <% @recipe.ingredients.each do |ingredient|%>
         <tr>
           <td><%= link_to ingredient.name, ingredient_path(ingredient) %></td>
-          <td id="ingredient_amount"><%= ingredient.recipe_amount(@recipe) %></td>
+          <td><%= ingredient.recipe_amount(@recipe) %></td>
         </tr>
       <% end %>
     </tbody>

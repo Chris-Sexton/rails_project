@@ -5,7 +5,6 @@
   <div class="media-body">
     <h4 class="newUser"></h4>
   </div>
-  
   <div id="newComment">
     <p></p>
   </div>
@@ -28,8 +27,9 @@
     var editMethods = function() {
       $('a#edit').on("click", function(event) {
         event.preventDefault();
-        $('#edit_comment_form').show();
-        $('#comment_content').hide();
+        var commentClass = "div." + event['target']['nextSibling']['parentNode']['children']['0']['className'] + " form";
+        console.log(commentClass);
+        $(commentClass).show();
       });
     }
 
@@ -88,7 +88,9 @@
         var comment = event['currentTarget']['2']['value'];
         var user_id = event['currentTarget']['3']['value'];
         var recipe_id = event['currentTarget']['4']['value'];
+
         var values = $(this).serialize();
+
         $.ajax({
           url: "http://localhost:3000/recipes/" + recipe_id + "/comments/",
           method: 'post',
