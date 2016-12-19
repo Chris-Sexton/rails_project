@@ -10,8 +10,10 @@
     $(function() {
       init()
     })
+
     function init() {
       $('#header').html("Ingredients")
+      // ERB works to render HTML in the view through javascript
       $('#link').html('<%= link_to "Add New Ingredient", new_ingredient_path %>');
       $.ajax({
         url: '/ingredients',
@@ -25,6 +27,7 @@
 
     function populateLinks(array) {
       var HTML = "<ul>";
+
       for(var i = 0; i < array.length; i++) {
         var name = array[i].name
         var id = array[i].id

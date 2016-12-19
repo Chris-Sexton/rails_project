@@ -1,9 +1,7 @@
 <h1><%= @ingredient.name %> Ingredient Page</h1>
 
-<p>You have <%= @ingredient.name %> available.</p>
+<p> <%= @ingredient.name %> is included in the following ingredients.</p>
 <p>Click the link to see more about each recipe.</p>
-
-<h3>Recipes Using This Ingredient</h3>
 
 <ul>
   <% @ingredient.recipes.each do |recipe| %>
@@ -19,7 +17,7 @@
       linkOverride();
       Recipe();
     });
-    
+
     var linkOverride = function() {
       $("a#recipe").click(function(event) {
         event.preventDefault();

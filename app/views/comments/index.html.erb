@@ -12,7 +12,7 @@
 
 <br><br>
 <div id="new_comment">
-<%= render 'form' %>
+  <%= render 'form' %>
 </div>
 
 <% content_for :comments do %>
@@ -23,13 +23,14 @@
       deleteMethods();
       createMethods();
     })
-    
+
     var editMethods = function() {
       $('a#edit').on("click", function(event) {
         event.preventDefault();
         var commentClass = "div." + event['target']['nextSibling']['parentNode']['children']['0']['className'] + " form";
         console.log(commentClass);
         $(commentClass).show();
+        // $('commentClass').hide();
       });
     }
 
@@ -81,16 +82,14 @@
       $(comment).text("Comment Deleted");
       console.log(event);
     }
-
+    
     var createMethods = function() {
       $('div#new_comment form').on("submit", function(event) {
         event.preventDefault();
         var comment = event['currentTarget']['2']['value'];
         var user_id = event['currentTarget']['3']['value'];
         var recipe_id = event['currentTarget']['4']['value'];
-
         var values = $(this).serialize();
-
         $.ajax({
           url: "/recipes/" + recipe_id + "/comments/",
           method: 'post',
