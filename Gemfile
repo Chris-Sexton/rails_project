@@ -3,11 +3,8 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
 gem 'omniauth-github'
-gem 'sprockets', '3.6.3'
 
-gem 'less-rails', '~> 2.8'
-gem 'therubyracer', '~> 0.12.2'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => "static"
+gem 'bootstrap-sass'
 gem 'active_model_serializers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

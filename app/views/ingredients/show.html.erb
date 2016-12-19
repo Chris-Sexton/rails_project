@@ -1,6 +1,6 @@
 <h1><%= @ingredient.name %> Ingredient Page</h1>
 
-<p>Ok, cool you have some <%= @ingredient.name %> in your fridge. Check out all the recipes we have and cook something with it!</p>
+<p>You have <%= @ingredient.name %> available.</p>
 <p>Click the link to see more about each recipe.</p>
 
 <h3>Recipes Using This Ingredient</h3>
@@ -50,11 +50,11 @@
     };
 
     Recipe.prototype.listItems = function() {
-      var ingredientList = '<h5>Other Ingredients in this Recipe</h5><ul>';
+      var ingredientList = '<h5>Other Ingredients in this Recipe</h5><ol>';
       for(var i = 0; i < this.ingredients.length; i++) {
         ingredientList += '<li>' + this.ingredients[i].name + '</li>';
       }
-      ingredientList += '</ul>';
+      ingredientList += '</ol>';
       return ingredientList;
     };
 
